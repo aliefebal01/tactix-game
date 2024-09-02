@@ -78,9 +78,9 @@ class Board():
             for i in range(move.col, move.col + move.piece_count):
                 self.np_pieces[move.row][i] = 0
         
-        # Switch to the next player
-        self.switch_player()
+        # Player is switched in the game class after the move is made
 
+        
     def valid_moves(self):
 
         valid_moves = [] # list of valid moves

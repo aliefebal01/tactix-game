@@ -9,23 +9,28 @@ class TactixGame():
         self.base_board = Board(height, width, np_pieces, current_player)  
 
     def getInitBoard(self):
+        "Returns the pieces as a numpy array."
         return self.base_board.np_pieces
     
     def getBoardSize(self):
+        "Returns the board size as a tuple."
         return self.base_board.height, self.base_board.width
     
     def getActionSize(self):
+        "Returns the number of possible moves at current board state."
         return len(self.base_board.valid_moves())
     
-    def getNextState(self, board_pieces, move):
-        """Returns a copy of the pieces as a numpy array with updated move, original board is unmodified."""
-        b = self.base_board.with_np_pieces(np_pieces=board_pieces)
+    def getNextState(self, move):
+        """Returns a copy of the next board state without altering the current state."""
+        b = self.base_board.with_np_pieces()
         b.remove_pieces(move)
-        return b.np_pieces
+        b.switch_player()
+        return b
     
     def makeMove(self, move):
         """Applies a move directly to the game board and updates the current player."""
         self.base_board.remove_pieces(move)
+        self.base_board.switch_player()
     
     def getValidMoves(self):
         "returning the valid moves"

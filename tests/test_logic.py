@@ -8,13 +8,18 @@ class TestBoard(unittest.TestCase):
     def setUp(self):
         """Set up a standard 5x5 board for testing."""
         self.board = Board()
+        self.board7 = Board(height=7, width=7)
 
-    def test_initial_board(self):
+    def test_initial_board(self):   
         """Test the initial board setup."""
         expected_pieces = np.ones((5, 5), dtype=int)
+        expected_pieces7 = np.ones((7, 7), dtype=int)
         np.testing.assert_array_equal(self.board.np_pieces, expected_pieces)
+        np.testing.assert_array_equal(self.board7.np_pieces, expected_pieces7)
         self.assertEqual(self.board.current_player, 1)
+        self.assertEqual(self.board7.current_player, 1)
         self.assertFalse(self.board.get_win_state().is_ended)
+        self.assertFalse(self.board7.get_win_state().is_ended)
 
     def test_switch_player(self):
         """Test switching players."""
