@@ -1,38 +1,43 @@
-# Tactix Game Project
+Tactix Game Project
 
-This project is made for my bachelor thesis "Development and Evaluation of Deep Q-Networks for the Game TacTix on Different Board Sizes" at Technical University of Berlin / DAI-Labor. This project implements the Tactix game along with AI agents using MCTS and DQN algorithms.
+This project is developed as part of my bachelor's thesis, "Development and Evaluation of Deep Q-Networks for the Game TacTix on Different Board Sizes," at the Technical University of Berlin / DAI-Labor. The project includes the implementation of the Tactix game along with AI agents using MCTS (Monte Carlo Tree Search) and DQN (Deep Q-Network) algorithms.
 
-## Setup
+Setup
 
-To set up the project, run the following commands:
+Environment Setup
 
-```sh
+To set up the required environment, run the following commands:
+
+# Create the environment using the environment.yml file
 conda env create -f environment.yml
+
+# Activate the environment
 conda activate tactix-game-env
 
+Adding Dependencies
 
-## if you are going to add dependencies to setup.py in order to distrubute your project you should also update the install_requires section in setup.py 
+If you need to add dependencies to setup.py for distributing your project, ensure you update the install_requires section in setup.py. For additional packages, follow these steps:
 
-## In order to update the environment when you add a new dependency :
+1. Add the new requirement to requirements.txt.
+2. Update the environment with:
+   conda env update -f environment.yml
 
-add the requirement to requirement.txt and then run the command:
+Environment Management
 
-conda env update -f environment.yml
+To manage the environment:
 
-## To activate and deactivate the environment
+- Activate the environment:
+  conda activate tactix-game-env
 
-conda activate tactix-game-env
+- Deactivate the environment:
+  conda deactivate
 
-conda deactivate
+Testing
 
+To run the tests, use the following commands from the project root:
 
-## Testing
+- To run a specific test file (e.g., test_logic.py):
+  python -m unittest tests/test_logic.py
 
-## to run tests run this command from the root directory:
-
-python -m unittest tests/test_logic.py ## the name can be specified
-
-## or you can run all the tests :
-
-python -m unittest discover -s tests
-
+- To run all tests:
+  python -m unittest discover -s tests

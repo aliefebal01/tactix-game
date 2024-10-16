@@ -1,4 +1,5 @@
 import numpy as np
+from tactix.tactixGame import TactixGame
 
 
 LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to kocsis and szepesvari 2006
@@ -41,9 +42,4 @@ class MCTSNode:
                 self.parent.backpropagate(result)
         
 
-class MCTSAgent:
-    def __init__(self, game, iterations=1000, exploration_weight=1 / np.sqrt(2)):
-        self.game = game                                # the game object
-        self.iterations = iterations                    # number of iterations per move 
-        self.exploration_weight = exploration_weight    # exploration weight
 
