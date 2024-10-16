@@ -60,7 +60,7 @@ class Board():
                 if self.np_pieces[move.row][i] == 0:
                     raise ValueError("Can't play; selected cells have empty cells")
         
-        return True
+        
                 
 
     def remove_pieces(self, move):
@@ -139,6 +139,7 @@ class Board():
         if np.all(self.np_pieces == 0):
             self.win_state = WinState(is_ended=True, winner= self.current_player) # if the board is empty the current player wins since the current player switches after every move made
         return self.win_state
+        
 
     def reset_game(self):
         "Reset the game state to the initial configuration."

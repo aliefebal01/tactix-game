@@ -39,8 +39,8 @@ class TactixGame():
     def getGameEnded(self):  #this function returns the reward and if the current player has no pieces to remove than the player before him lost the game 
         """
         Returns:
-        - winstate if the game has ended
-        - None or a specific value indicating that the game has not ended yet.
+        - winstate if the game has ended -> (is_ended, winner)
+        - None if the game has not ended
         """
         winstate = self.base_board.get_win_state()
         if winstate.is_ended:

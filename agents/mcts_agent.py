@@ -1,7 +1,7 @@
 import numpy as np
 
 
-LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) 
+LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to kocsis and szepesvari 2006
 
 
 class MCTSNode:
@@ -32,6 +32,13 @@ class MCTSNode:
             child_node = MCTSNode(next_state, parent=self)
             self.children.append(child_node)
             return child_node
+        
+        def backpropagate(self, result):
+            "Update this node - one node with the result of a simulation."
+            self.visits += 1
+            self.wins += result
+            if self.parent:
+                self.parent.backpropagate(result)
         
 
 class MCTSAgent:
