@@ -1,5 +1,8 @@
 import numpy as np
+import random 
+
 from tactix.tactixGame import TactixGame
+
 
 
 LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to kocsis and szepesvari 2006
@@ -18,17 +21,12 @@ class MCTSNode:
             "Returns True if all actions have been tried."
             return len(self.untried_actions) == 0
         
-        def best_child(self, c_param=LEARNING_PARAM):
-            "Return the child with the highest UCB score."
-            choices_weights = [
-                (c.wins / c.visits) + c_param * np.sqrt((2 * np.log(self.visits) / c.visits))
-                for c in self.children
-            ]
-            return self.children[np.argmax(choices_weights)]
         
         def expand(self):
-            "Expand the node by adding all possible child nodes."
-            action = self.untried_actions.pop()
+            "Expand the node by adding a randomly choosen child node."
+            idx = random.randrange(len(self.untried_actions))
+            action = self.untried_actions.pop(idx)
+            
             next_state = self.state.getNextState(action)
             child_node = MCTSNode(next_state, parent=self)
             self.children.append(child_node)

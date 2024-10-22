@@ -6,7 +6,12 @@ class TactixGame():
     
 
     def __init__(self, height=None, width=None, np_pieces=None, current_player = 1):
-        self.base_board = Board(height, width, np_pieces, current_player)  
+        self.base_board = Board(height, width, np_pieces, current_player)
+
+    def __eq__(self, other):
+        if isinstance(other, TactixGame):
+            return (self.base_board == other.base_board)
+        return False 
 
     def getInitBoard(self):
         "Returns the pieces as a numpy array."

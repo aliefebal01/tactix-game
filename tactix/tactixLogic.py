@@ -28,6 +28,14 @@ class Board():
 
         
         self.win_state = WinState(is_ended=False, winner=None)
+    
+
+    def __eq__(self, other):
+        if isinstance(other, Board):
+            return (self.height == other.height and self.width == other.width and
+                    self.np_pieces == other.np_pieces and self.current_player == other.current_player)
+        return False
+
 
     def switch_player(self):
         self.current_player = -1 if self.current_player == 1 else 1 # switching among players 1 and -1
