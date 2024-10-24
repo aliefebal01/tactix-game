@@ -36,6 +36,10 @@ class Board():
 
     def is_valid_move(self, move):  
         "Check if move is valid."
+
+        # Convert integers 0 and 1 to booleans (True, False) if necessary
+        if isinstance(move.ver, int):
+            move.ver = bool(move.ver)
         
         # Check if ver is 0 (False) or 1 (True)
         if not isinstance(move.ver, bool):

@@ -18,7 +18,7 @@ class TactixGame():
             return (self.base_board == other.base_board)
         return False 
 
-    def getInitBoard(self):
+    def getPieces(self):
         "Returns the pieces as a numpy array."
         return self.base_board.np_pieces
     

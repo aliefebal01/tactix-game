@@ -14,8 +14,6 @@ def play_game():
 
     while current_state.getGameEnded() is None:
 
-        print(f"Current player: {current_state.current_player}")
-
         if current_state.current_player == 1:
             # Agent's turn
             print("\n Agent is making a move...")

@@ -6,7 +6,7 @@ LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to
 
 
 class MCTSAgent:
-    def __init__(self, player, iterations=1000, exploration_weight=None):
+    def __init__(self, player, iterations=30000, exploration_weight=None):
         self.player = player                                              # the player
         self.iterations = iterations                                      # number of iterations per move (during training)
         self.exploration_weight = exploration_weight or LEARNING_PARAM    # exploration weight
