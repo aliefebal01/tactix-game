@@ -2,47 +2,45 @@ from collections import namedtuple
 from tactix.tactixMove import Move
 import numpy as np
 
-
+# switch_player ve get_win_state functions tactixgame e gececek get_win_state yerine get_board_empty winstate i de tactixgame e gececek
 
 DEFAULT_HEIGHT = 5
 DEFAULT_WIDTH = 5
 
-WinState = namedtuple('WinState', 'is_ended winner')
+
 
 
 class Board():
 
     """Tactix Board"""
 
-    def __init__(self, height=None, width=None, np_pieces=None, current_player=1):
+    def __init__(self, height=None, width=None, np_pieces=None):
         "Set up initial board configuration."
         self.height = height or DEFAULT_HEIGHT
         self.width = width or DEFAULT_WIDTH
-        self.current_player = current_player  # Player 1 starts if it is not specified
+        
 
         if np_pieces is None:
             self.np_pieces = np.ones([self.height, self.width], dtype=int)
         else:
             self.np_pieces = np_pieces
             assert self.np_pieces.shape == (self.height, self.width)
-
-        
-        self.win_state = WinState(is_ended=False, winner=None)
-    
+            
 
     def __eq__(self, other):
         if isinstance(other, Board):
             return (self.height == other.height and self.width == other.width and
-                    self.np_pieces == other.np_pieces and self.current_player == other.current_player)
+                    np.array_equal(self.np_pieces, other.np_pieces))
         return False
-
-
-    def switch_player(self):
-        self.current_player = -1 if self.current_player == 1 else 1 # switching among players 1 and -1
-
     
+
     def is_valid_move(self, move):  
         "Check if move is valid."
+        
+        # Check if ver is 0 (False) or 1 (True)
+        if not isinstance(move.ver, bool):
+            raise ValueError("The 'ver' parameter must be either 0 (horizontal) or 1 (vertical)")
+
         
         if (move.row < 0 or move.row >= self.height):
             raise ValueError("Can't play; selected row is outside the board")
@@ -131,28 +129,26 @@ class Board():
     
 
 
-    def with_np_pieces(self, np_pieces, current_player=None):
-        """Create copy of board with specified pieces."""
-        
-        if current_player is None:
-            current_player = self.current_player
-        
-        if np_pieces is None:
-            np_pieces = self.np_pieces
-        return Board(self.height, self.width, np_pieces, current_player)
+    def get_board_copy(self):
+        """Create a deep copy of the board object."""
+        # Use np.copy to create a copy of the np_pieces array
+        np_pieces_copy = np.copy(self.np_pieces)
+    
+        # Return a new Board instance with the copied pieces and same dimensions
+        return Board(self.height, self.width, np_pieces_copy)
     
 
-    def get_win_state(self):
+    def get_board_empty(self):
         # Check if the board is empty
         if np.all(self.np_pieces == 0):
-            self.win_state = WinState(is_ended=True, winner= self.current_player) # if the board is empty the current player wins since the current player switches after every move made
-        return self.win_state
+            return True
+        return False
         
 
-    def reset_game(self):
+    def reset_board(self):
         "Reset the game state to the initial configuration."
         self.np_pieces = np.ones([self.height, self.width], dtype=int)
-        self.win_state = WinState(is_ended=False, winner=None)
+        
     
 
     def __str__(self):

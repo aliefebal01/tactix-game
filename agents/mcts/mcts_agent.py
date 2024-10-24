@@ -29,6 +29,7 @@ class MCTSAgent:
         "Return the child with the highest UCB score."
         if c_param is None:
             c_param = self.exploration_weight
+
         children_ucb = [
             (child.wins / child.visits) + c_param * np.sqrt(2 * np.log(node.visits) / child.visits)
             for child in node.children
@@ -51,10 +52,9 @@ class MCTSAgent:
         "Simulate a random playout from the current node."
         current_state = node.state
         while current_state.getGameEnded() is None:  # Playing until the game ends 
-            action = random.choice(current_state.getValidMoves())
-            state = current_state.getNextState(action)
-        
-        winner = state.getGameEnded().winner           # Returning the winner (-1 or 1)
+            action = random.choice(current_state.getValidMoves())          
+            current_state = current_state.getNextState(action)    
+        winner = current_state.getGameEnded().winner           # Returning the winner (-1 or 1)
         
         if winner == self.player:   # Returning the reward of the game
             return 1
@@ -74,6 +74,7 @@ class MCTSAgent:
         found = False
         for child in best_node.children:
             if child.state == new_state:
+                print(f"Updating root to new state after opponent's move.")
                 self.root = child  # Update the root to the corresponding child node
                 self.root.parent = None  # Detach from the previous tree to free up memory
                 found = True
