@@ -15,7 +15,7 @@ class TactixGame():
 
     def __eq__(self, other):
         if isinstance(other, TactixGame):
-            return (self.base_board == other.base_board)
+            return (self.base_board == other.base_board and self.current_player == other.current_player)
         return False 
 
     def getPieces(self):

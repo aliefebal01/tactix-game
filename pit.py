@@ -1,31 +1,28 @@
-import random 
 from tactix.tactixGame import TactixGame
 from agents.mcts.mcts_agent import MCTSAgent
 from tactix.tactixMove import Move
+from agents.mcts.mcts_node import MCTSNode
 
 def play_game():
-    # Initialize game and agent 
-    game = TactixGame()             #Initializing the game on a 5x5 board with starting player 1 when not specified
-    agent = MCTSAgent(player=1)     #Initializing the agent with player 1 and 1000 iterations per move, exploration weight is 1/sqrt(2)
-    current_state = game
+    # Initialize the game and agent
+    game = TactixGame()
+    agent = MCTSAgent(player = 1)
+    current_node = MCTSNode(game)
     
 
     print("Game started!")
 
-    while current_state.getGameEnded() is None:
-
-        if current_state.current_player == 1:
-            # Agent's turn
+    while current_node.state.getGameEnded() is None:
+        if current_node.state.current_player == agent.player:
+            # Agent's Turn
             print("\n Agent is making a move...")
-            best_node = agent.best_child(current_state) # Get agent's best move 
-            current_state = best_node.state
-            current_state.display()
+            best_node = agent.best_child(current_node) # Get agent's best node
+            current_node = best_node
+            current_node.state.display()
 
-        
         else:
             # Human's Turn
-            print("\n Your Turn!(Player -1)")
-            
+            print("\n Your Turn!")
             # Loop till the human makes a valid move
             valid_input = False
             while not valid_input:
@@ -41,22 +38,18 @@ def play_game():
                     human_move = Move(row, col, count, bool(ver))
 
                     # Check if the move is valid
-                    current_state.base_board.is_valid_move(human_move)
+                    current_node.state.base_board.is_valid_move(human_move)
                     valid_input = True
                 except ValueError as e:
                     print(f"Invalid move: {e}. Please try again!")
-
-
-            # Applying the move to get to the next state
-            current_state = current_state.getNextState(human_move)
-            current_state.display()
             
-            # Updating the agent's root with the new state after Opponent's move
-            agent.update_root(best_node, human_move)
+            # Applying the move to get to the next state
+            current_node.state = current_node.state.getNextState(human_move)
+            current_node.state.display()
+            
 
-
-    # Announce winner 
-    winner = current_state.getGameEnded().winner
+        # Announce winner 
+    winner = current_node.state.getGameEnded().winner
     if winner == 1:
         print("Agent wins!")
     else:
@@ -64,3 +57,4 @@ def play_game():
 
 if __name__ == "__main__":
     play_game()
+            

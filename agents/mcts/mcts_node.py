@@ -35,9 +35,11 @@ class MCTSNode:
     def backpropagate(self, result):
         "Update this node - one node with the result of a simulation."
         self.visits += 1
-        self.wins += result
+        if result == 1:
+            self.wins += 1
         if self.parent:
             self.parent.backpropagate(result)
+            
         
 
 
