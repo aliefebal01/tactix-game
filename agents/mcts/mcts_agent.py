@@ -22,20 +22,20 @@ class MCTSAgent:
             result = self.rollout(node)
             node.backpropagate(result)
     
-        children_ucb = [
-            (child.wins / child.visits) + self.exploration_weight * np.sqrt(2 * np.log(node.visits) / child.visits)
-            for child in self.root.children
-        ]
-        for x, child in enumerate(self.root.children):
-            print(f"Child{x+1}: visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
+        # children_ucb = [
+        #     (child.wins / child.visits) + self.exploration_weight * np.sqrt(2 * np.log(node.visits) / child.visits)
+        #     for child in self.root.children
+        # ]
+        # for x, child in enumerate(self.root.children):
+        #     print(f"Child{x+1}: visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
 
         
         best_node = self.ucb(self.root, c_param=0)
 
-        for x, child in enumerate(self.root.children):
-            if child.state == best_node.state:
-                print(f"Child Chosen:{x+1} visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
-                break
+        # for x, child in enumerate(self.root.children):
+        #     if child.state == best_node.state:
+        #         print(f"Child Chosen:{x+1} visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
+        #         break
 
         return best_node
     
