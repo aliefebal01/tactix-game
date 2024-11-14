@@ -2,11 +2,13 @@ from tactix.tactixGame import TactixGame
 from agents.mcts.mcts_agent import MCTSAgent
 from tactix.tactixMove import Move
 from agents.mcts.mcts_node import MCTSNode
+from agents.mcts.mcts_agent_negamax import MCTSAgent_negamax
+import numpy as np
 
 def play_game():
     # Initialize the game and agent
     game = TactixGame()
-    agent = MCTSAgent(player = 1)
+    agent = MCTSAgent_negamax(player = 1, iterations=1000)
     current_node = MCTSNode(game)
     
 
@@ -15,13 +17,15 @@ def play_game():
     while current_node.state.getGameEnded() is None:
         if current_node.state.current_player == agent.player:
             # Agent's Turn
+            current_node.state.display()
             print("\n Agent is making a move...")
             best_node = agent.best_child(current_node) # Get agent's best node
             current_node = best_node
-            current_node.state.display()
+            
 
         else:
             # Human's Turn
+            current_node.state.display()
             print("\n Your Turn!")
             # Loop till the human makes a valid move
             valid_input = False
@@ -45,7 +49,7 @@ def play_game():
             
             # Applying the move to get to the next state
             current_node.state = current_node.state.getNextState(human_move)
-            current_node.state.display()
+            
             
 
         # Announce winner 

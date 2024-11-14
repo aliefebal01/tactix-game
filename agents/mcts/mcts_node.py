@@ -39,7 +39,27 @@ class MCTSNode:
             self.wins += 1
         if self.parent:
             self.parent.backpropagate(result)
-            
+
+    def reverse_negamax(self, result):
+        """
+        Updates the win statistics for the current node and its ancestors in a negamax style, 
+        where a loss for the current player is considered a win for the opponent.
+
+        Parameters:
+        - result: The final game result (player identifier) that indicates the winner of the simulation.
+        """
+        # Increment visit count to track the number of simulations reaching this node
+        self.visits += 1
+
+        # If the result matches the current player, it was a loss (reverse scoring for negamax)
+        if result == self.state.current_player:
+            self.wins -= 1
+        else:
+            self.wins += 1
+        # Recursively apply negamax-style backpropagation up the tree to the parent node
+        if self.parent:
+            self.parent.reverse_negamax(result)
+
         
 
 

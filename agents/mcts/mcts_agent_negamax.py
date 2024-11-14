@@ -5,7 +5,7 @@ from .mcts_node import MCTSNode
 LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to kocsis and szepesvari 2006
 DEFAULT_ITERATIONS = 1000
 
-class MCTSAgent:
+class MCTSAgent_negamax:
     def __init__(self, player, iterations=None, exploration_weight=None):
         self.player = player                                              # the player
         self.iterations = iterations or DEFAULT_ITERATIONS                # number of iterations per move (during training)
@@ -22,22 +22,22 @@ class MCTSAgent:
         for _ in range(self.iterations):
             node = self.tree_policy(self.root)
             result = self.rollout(node)
-            node.backpropagate(result)
+            node.reverse_negamax(result)
     
-        # children_ucb = [
-        #     (child.wins / child.visits) + self.exploration_weight * np.sqrt(2 * np.log(node.visits) / child.visits)
-        #     for child in self.root.children
-        # ]
-        # for x, child in enumerate(self.root.children):
-        #     print(f"Child{x+1}: visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
+        children_ucb = [
+            (child.wins / child.visits) + self.exploration_weight * np.sqrt(2 * np.log(node.visits) / child.visits)
+            for child in self.root.children
+        ]
+        for x, child in enumerate(self.root.children):
+            print(f"Child{x+1}: visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
 
         
         best_node = self.ucb(self.root, c_param=0)
 
-        # for x, child in enumerate(self.root.children):
-        #     if child.state == best_node.state:
-        #         print(f"Child Chosen:{x+1} visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
-        #         break
+        for x, child in enumerate(self.root.children):
+            if child.state == best_node.state:
+                print(f"Child Chosen:{x+1} visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
+                break
 
         return best_node
     
@@ -72,10 +72,7 @@ class MCTSAgent:
             current_state = current_state.getNextState(action)    
         winner = current_state.getGameEnded().winner           # Returning the winner (-1 or 1)
         
-        if winner == self.player:   # Returning the reward of the game
-            return 1
-        else:
-            return -1 
+        return winner
         
 
     def set_root(self, node):
