@@ -6,8 +6,8 @@ from agents.mcts.mcts_node import MCTSNode
 
 def agents_play():
     game = TactixGame()
-    agent_10000 = MCTSAgent(player=1, iterations=3000)
-    agent_30000 = MCTSAgent_negamax(player=-1, iterations=1000)
+    agent_10000 = MCTSAgent_negamax(player=1, iterations=1000, exploration_weight=0.2)
+    agent_30000 = MCTSAgent_negamax(player=-1, iterations=1000, exploration_weight=0)
     current_node = MCTSNode(game)
 
     while current_node.state.getGameEnded() is None:

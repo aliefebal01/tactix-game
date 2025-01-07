@@ -8,7 +8,7 @@ import numpy as np
 def play_game():
     # Initialize the game and agent
     game = TactixGame()
-    agent = MCTSAgent_negamax(player = 1, iterations=1000)
+    agent = MCTSAgent_negamax(player = 1, iterations=6000, exploration_weight=0.2)
     current_node = MCTSNode(game)
     
 
@@ -24,7 +24,7 @@ def play_game():
             
 
         else:
-            # Human's Turn
+            # Opponent's Turn
             current_node.state.display()
             print("\n Your Turn!")
             # Loop till the human makes a valid move

@@ -36,7 +36,7 @@ class MCTSAgent_negamax:
 
         for x, child in enumerate(self.root.children):
             if child.state == best_node.state:
-                print(f"Child Chosen:{x+1} visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
+                print(f"Child Chosen:{x+1} visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}, exploration_weight: {self.exploration_weight}")
                 break
 
         return best_node
@@ -94,17 +94,21 @@ class MCTSAgent_negamax:
 
     def find_matching_descendant(self, target_node):
         "Searching the grandchildren of the current node to find the target node"
-        # If no root has been set (first call by the second player), return None to signal this state.
+        # If no root has been set (first call by the second player), return None to signal this state (in case where both players are ai agents)
         if self.root == None:
             return None
-
+                
         # Search through the children and grandchildren of the current root for a matching state.
         for child in self.root.children:
             for grand_child in child.children:
                 if grand_child.state == target_node.state:
+                    print("Matching node found!")
                     return grand_child
         # If no matching node is found, return None to signal the need for a new root.
         return None 
+
+
+
             
 
 

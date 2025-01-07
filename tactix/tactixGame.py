@@ -1,14 +1,20 @@
 from collections import namedtuple
 import numpy as np
+import random
+from tactix.tactixMove import Move
 from tactix.tactixLogic import Board
 
 DEFAULT_STARTING_PLAYER = 1
+DEFAULT_HEIGHT = 5
 WinState = namedtuple('WinState', 'is_ended winner')
+
 
 class TactixGame():
     
 
     def __init__(self, height=None, width=None, np_pieces=None, current_player = None):
+        self.height = height or DEFAULT_HEIGHT
+        self.width = width or DEFAULT_HEIGHT
         self.base_board = Board(height, width, np_pieces if np_pieces is not None else None)
         self.current_player = current_player or DEFAULT_STARTING_PLAYER
         self.win_state = WinState(is_ended=False, winner=None)  # Initialize with is_ended=False
@@ -61,6 +67,53 @@ class TactixGame():
         else:
             return None  # Game is not over yet
         
+    def get_dqn_reward(self):
+        """
+        Calculate the reward for the current board state in Tactix.
+
+        Efficiently checks if the board has exactly one piece left using NumPy's sum function.
+        Returns a reward of 1 if the condition is met.
+
+        Returns:
+            int: The reward for the current state (1 if the board has only 
+            one piece left, otherwise None or no reward).
+        """
+        piece_count = np.sum(self.base_board.np_pieces)
+        if piece_count == 1:
+            return 1
+        else:
+            return 0
+        
+    def get_random_move(self):
+        valid_moves = self.getValidMoves()
+        if len(valid_moves) > 1:
+            x = True
+            while x:
+                move = random.choice(valid_moves)
+                if move.piece_count != np.sum(self.base_board.np_pieces):
+                    x = False
+                    return move
+        else:
+            return valid_moves[0]
+        
+
+    def encode_action(move):
+        """Convert a Move object to an action index."""
+        index = move.row * 25 + move.col * 5 + (move.piece_count - 1)
+        if move.ver:
+            index += 60  # Offset for vertical moves
+        return index
+
+    def decode_action(action_index):
+        """Convert an action index back to a Move object."""
+        ver = action_index >= 60
+        if ver:
+            action_index -= 60
+        row = action_index // 25
+        col = (action_index % 25) // 5
+        piece_count = (action_index % 5) + 1
+        return Move(row=row, col=col, piece_count=piece_count, ver=ver)
+
         
     def display(self):
         """Display the current board and current player."""
