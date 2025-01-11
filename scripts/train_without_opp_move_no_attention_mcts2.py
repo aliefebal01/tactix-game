@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
-from scripts.dqn_agent_attention import DQNAgent
+from scripts.dqn_agent import DQNAgent
 from agents.mcts.mcts_agent_negamax import MCTSAgent_negamax
 from agents.mcts.mcts_node import MCTSNode
 from tactix.utils import *
@@ -14,7 +14,7 @@ import os
 LAYERS = [[50, 125]]
 GAMMAS = [0.95]
 
-class TrainAndPlot_without_opp_move_attention_mcts2:
+class TrainAndPlot_without_opp_move_no_attention_mcts2:
     def __init__(self,
                 env_size = 5,
                 n_episodes=100000, 
@@ -204,7 +204,7 @@ class TrainAndPlot_without_opp_move_attention_mcts2:
         # Centralized directory setup
         project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
         base_dir = os.path.join(project_root, "training_results")
-        save_dir = os.path.join(base_dir,f"training_results_{self.env.game.height}x{self.env.game.height}_with_attention_mcts2")
+        save_dir = os.path.join(base_dir,f"training_results_{self.env.game.height}x{self.env.game.height}_without_attention_mcts2")
         models_dir = os.path.join(save_dir, "models")
         plots_dir = os.path.join(save_dir, "plots")
 

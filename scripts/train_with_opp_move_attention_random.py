@@ -168,7 +168,7 @@ class TrainAndPlot_with_opp_move_attention_random:
     def run_experiments(self):
         
         # Centralized directory setup
-        base_dir = "/Users/alibal/Desktop/tactix_training"  # Adjust to your system's directory path
+        base_dir = "../training_results"  # Adjust to your system's directory path
         save_dir = os.path.join(base_dir, f"training_results_{self.env.game.height}x{self.env.game.height}_randomopponent_s'_after_opponent_with_attention")
         models_dir = os.path.join(save_dir, "models")
         plots_dir = os.path.join(save_dir, "plots")

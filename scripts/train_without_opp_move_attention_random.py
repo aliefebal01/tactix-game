@@ -191,7 +191,8 @@ class TrainAndPlot_without_opp_move_attention_random:
     def run_experiments(self):
         
         # Centralized directory setup
-        base_dir = "/Users/alibal/Desktop/tactix_training"
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        base_dir = os.path.join(project_root, "training_results")
         save_dir = os.path.join(base_dir,f"training_results_{self.env.game.height}x{self.env.game.height}_randomopponent_s'_after_agent_withattention")
         models_dir = os.path.join(save_dir, "models")
         plots_dir = os.path.join(save_dir, "plots")
@@ -282,6 +283,6 @@ class TrainAndPlot_without_opp_move_attention_random:
                     plot_name = f"{parameters_for_filename}.png"
                     plot_path = os.path.join(plots_dir, plot_name)
                     plt.savefig(plot_path, bbox_inches="tight")  # Save all elements, ensuring no clipping
-                    plt.show()
+                    plt.close()
                     
         return results
