@@ -5,6 +5,8 @@ from .mcts_node import MCTSNode
 LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to kocsis and szepesvari 2006
 DEFAULT_ITERATIONS = 1000
 
+random.seed(42)
+
 class MCTSAgent_negamax:
     def __init__(self, player, iterations=None, exploration_weight=None):
         self.player = player                                              # the player
@@ -24,20 +26,20 @@ class MCTSAgent_negamax:
             result = self.rollout(node)
             node.reverse_negamax(result)
     
-        children_ucb = [
-            (child.wins / child.visits) + self.exploration_weight * np.sqrt(2 * np.log(node.visits) / child.visits)
-            for child in self.root.children
-        ]
-        for x, child in enumerate(self.root.children):
-            print(f"Child{x+1}: visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
+        # children_ucb = [
+        #     (child.wins / child.visits) + self.exploration_weight * np.sqrt(2 * np.log(node.visits) / child.visits)
+        #     for child in self.root.children
+        # ]
+        # for x, child in enumerate(self.root.children):
+        #     print(f"Child{x+1}: visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}")
 
         
         best_node = self.ucb(self.root, c_param=0)
 
-        for x, child in enumerate(self.root.children):
-            if child.state == best_node.state:
-                print(f"Child Chosen:{x+1} visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}, exploration_weight: {self.exploration_weight}")
-                break
+        # for x, child in enumerate(self.root.children):
+        #     if child.state == best_node.state:
+        #         print(f"Child Chosen:{x+1} visits: {child.visits}, wins: {child.wins}, ucb: {children_ucb[x]}, exploration_weight: {self.exploration_weight}")
+        #         break
 
         return best_node
     
@@ -102,7 +104,7 @@ class MCTSAgent_negamax:
         for child in self.root.children:
             for grand_child in child.children:
                 if grand_child.state == target_node.state:
-                    print("Matching node found!")
+                    # print("Matching node found!")
                     return grand_child
         # If no matching node is found, return None to signal the need for a new root.
         return None 

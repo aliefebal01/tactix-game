@@ -2,6 +2,8 @@ import numpy as np
 import random 
 from .mcts_node import MCTSNode
 
+random.seed(42)
+
 LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to kocsis and szepesvari 2006
 DEFAULT_ITERATIONS = 1000
 

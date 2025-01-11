@@ -3,7 +3,7 @@ import random
 
 from tactix.tactixGame import TactixGame
 
-
+random.seed(42)
 
 LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to kocsis and szepesvari 2006
 

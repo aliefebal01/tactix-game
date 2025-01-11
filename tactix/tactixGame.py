@@ -8,6 +8,8 @@ DEFAULT_STARTING_PLAYER = 1
 DEFAULT_HEIGHT = 5
 WinState = namedtuple('WinState', 'is_ended winner')
 
+random.seed(42)
+
 
 class TactixGame():
     

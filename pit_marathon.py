@@ -3,11 +3,12 @@ from agents.mcts.mcts_agent import MCTSAgent
 from agents.mcts.mcts_agent_negamax import MCTSAgent_negamax
 from tactix.tactixMove import Move
 from agents.mcts.mcts_node import MCTSNode
+import numpy as np
 
 def agents_play():
     game = TactixGame()
-    agent_10000 = MCTSAgent_negamax(player=1, iterations=1000, exploration_weight=0.2)
-    agent_30000 = MCTSAgent_negamax(player=-1, iterations=1000, exploration_weight=0)
+    agent_10000 = MCTSAgent_negamax(player=1, iterations=1000, exploration_weight=1/np.sqrt(2))
+    agent_30000 = MCTSAgent_negamax(player=-1, iterations=1000, exploration_weight=0.4)
     current_node = MCTSNode(game)
 
     while current_node.state.getGameEnded() is None:
