@@ -20,8 +20,8 @@ class DQNAgent:
         epsilon_decay=0.999876,
         memory_capacity=10000,
         alpha=0.6,  # Priority sampling exponent
-        beta_start=0.4,  # Initial importance-sampling correction factor
-        beta_end=1.0,  # Final importance-sampling correction factor
+        beta_start=0.3,  # Initial importance-sampling correction factor
+        beta_end=0.6,  # Final importance-sampling correction factor
         beta_anneal_steps=100000,  # Steps to anneal beta
         device='cpu',
         pretrained_model_path=None
