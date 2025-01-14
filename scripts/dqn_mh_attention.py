@@ -3,20 +3,21 @@ import torch.nn as nn
 
 class DQN(nn.Module):
     """
-    A DQN with a single attention layer after the input state.
+    A DQN with a multihead attention layer after the input state.
     """
     def __init__(self, state_size, action_size, layer_sizes):
         super(DQN, self).__init__()
         self.state_size = state_size
         self.action_size = action_size
         
+        self.input_projection = nn.Linear(self.state_size, self.state_size * 3)
         # Attention layer
-        self.multihead_attention = nn.MultiheadAttention(embed_dim=state_size, num_heads=1, batch_first=True)
+        self.multihead_attention = nn.MultiheadAttention(embed_dim=state_size * 3, num_heads=3, batch_first=True)
         
         
         # Hidden layers
         layers = []
-        input_dim = state_size
+        input_dim = state_size * 3
         for hidden_size in layer_sizes:
             layers.append(nn.Linear(input_dim, hidden_size))
             layers.append(nn.ReLU())
@@ -31,9 +32,11 @@ class DQN(nn.Module):
         Forward pass through the DQN with an attention layer.
         x: Input state tensor, shape [batch_size, state_size].
         """
+        # Pass through the input projection
+        x = self.input_projection(x)
         # Add a sequence dimension: (batch_size, state_size) -> (batch_size, 1, state_size)
         x = x.unsqueeze(1)
-
+        
         # Input shape: (batch_size, state_size)
         attn_output, _ = self.multihead_attention(x, x, x)  # Self-attention
 
