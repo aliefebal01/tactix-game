@@ -18,7 +18,7 @@ class DQNWithDropoutAndResidual(nn.Module):
         # Attention layer
         if HAS_ATTENTION:
             # Attention - Single or Multihead
-            num_heads = 1           # has to divide hidden_dim
+            num_heads = 4           # has to divide hidden_dim
             self.attention = nn.MultiheadAttention(embed_dim=self.embedding_dim, num_heads=num_heads, batch_first=True)
         
         # Hidden layers
