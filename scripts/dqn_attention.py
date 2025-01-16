@@ -38,7 +38,7 @@ class DQN(nn.Module):
         attn_output, _ = self.multihead_attention(x, x, x)  # Self-attention
 
         # Remove the sequence dimension: (batch_size, 1, state_size) -> (batch_size, state_size)
-        #x = attn_output.squeeze(1)
+        x = attn_output
         
         # Pass through the rest of the network
         return self.network(x)  # Outputs Q-values for each action

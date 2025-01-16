@@ -204,7 +204,7 @@ class TrainAndPlot_without_opp_move_dr_re:
         # Centralized directory setup
         project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
         base_dir = os.path.join(project_root, "training_results")
-        save_dir = os.path.join(base_dir,f"training_results_{self.env.game.height}x{self.env.game.height}_with_attention_mcts2")
+        save_dir = os.path.join(base_dir,f"training_results_{self.env.game.height}x{self.env.game.height}_without_attention_mcts2")
         models_dir = os.path.join(save_dir, "models")
         plots_dir = os.path.join(save_dir, "plots")
 
