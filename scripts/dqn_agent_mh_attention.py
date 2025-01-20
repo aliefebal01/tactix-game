@@ -30,6 +30,7 @@ class DQNAgent:
         self.epsilon_decay = epsilon_decay
         self.device = device
         
+        torch.manual_seed(42)  # Ensures deterministic weight initialization
         # Q-Networks (main + target)
         self.q_network = DQN(state_size, action_size, layer_sizes).to(self.device)
         self.target_network = DQN(state_size, action_size, layer_sizes).to(self.device)

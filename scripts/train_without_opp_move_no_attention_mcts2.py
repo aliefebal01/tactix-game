@@ -138,7 +138,8 @@ class TrainAndPlot_without_opp_move_no_attention_mcts2:
                     state = next_state
                     
                 
-                    episode_reward += reward
+                    if reward == 1 or reward == -1:
+                        episode_reward += reward
 
             
             # Update target

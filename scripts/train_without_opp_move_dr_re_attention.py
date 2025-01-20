@@ -137,8 +137,8 @@ class TrainAndPlot_without_opp_move_dr_re_attention:
                     
                     state = next_state
                     
-                
-                    episode_reward += reward
+                    if reward == 1 or reward == -1:
+                        episode_reward += reward
 
             
             # Update target

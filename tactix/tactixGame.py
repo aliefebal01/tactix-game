@@ -3,6 +3,7 @@ import numpy as np
 import random
 from tactix.tactixMove import Move
 from tactix.tactixLogic import Board
+from scipy.signal import convolve2d
 
 DEFAULT_STARTING_PLAYER = 1
 DEFAULT_HEIGHT = 5
@@ -20,6 +21,28 @@ class TactixGame():
         self.base_board = Board(height, width, np_pieces if np_pieces is not None else None)
         self.current_player = current_player or DEFAULT_STARTING_PLAYER
         self.win_state = WinState(is_ended=False, winner=None)  # Initialize with is_ended=False
+        # Define shape templates
+        self.shapes = {
+            "triangle": np.array([
+                [1, 1],
+                [1, 0]
+            ]),
+            "square": np.array([
+                [1, 1],
+                [1, 1]
+            ]),
+            "line_2": np.array([[1, 1]]),
+            "line_3": np.array([[1, 1, 1]]),
+            "line_4": np.array([[1, 1, 1, 1]]),
+            "line_5": np.array([[1, 1, 1, 1, 1]])
+        }
+        if self.height == 6:
+            self.shapes["line_6"] = np.array([[1, 1, 1, 1, 1, 1]])
+        if self.height == 7:
+            self.shapes["line_6"] = np.array([[1, 1, 1, 1, 1, 1]])
+            self.shapes["line_7"] = np.array([[1, 1, 1, 1, 1, 1, 1]])
+        
+
 
     def __eq__(self, other):
         if isinstance(other, TactixGame):
@@ -99,22 +122,46 @@ class TactixGame():
             return valid_moves[0]
         
 
-    def encode_action(move):
-        """Convert a Move object to an action index."""
-        index = move.row * 25 + move.col * 5 + (move.piece_count - 1)
-        if move.ver:
-            index += 60  # Offset for vertical moves
-        return index
+    def detect_all_shapes(self):
+        """
+        Detect predefined shapes in a matrix.
 
-    def decode_action(action_index):
-        """Convert an action index back to a Move object."""
-        ver = action_index >= 60
-        if ver:
-            action_index -= 60
-        row = action_index // 25
-        col = (action_index % 25) // 5
-        piece_count = (action_index % 5) + 1
-        return Move(row=row, col=col, piece_count=piece_count, ver=ver)
+        Parameters:
+            matrix (np.array): The input binary matrix (e.g., 7x7 board).
+        
+        Returns:
+            dict: A dictionary containing booleans for each shape's existence.
+        """
+
+        def detect_shape_with_rotations(matrix, shape):
+            """
+            Check if a shape exists in the matrix, considering all rotations.
+
+            Parameters:
+                matrix (np.array): The input binary matrix.
+                shape (np.array): The binary shape to detect.
+            
+            Returns:
+                bool: True if the shape is detected in any orientation, False otherwise.
+            """
+            for _ in range(4):  # Rotate 0, 90, 180, and 270 degrees
+                # Perform a convolution between the matrix and the shape
+                result = convolve2d(matrix, shape, mode='valid')
+                
+                # Check if the sum of the shape matches anywhere in the result
+                if np.any(result == np.sum(shape)):
+                    return True
+                shape = np.rot90(shape)  # Rotate the shape by 90 degrees
+            return False
+
+        # Initialize results
+        results = {shape_name: False for shape_name in self.shapes}
+
+        # Detect each shape
+        for shape_name, shape in self.shapes.items():
+            results[shape_name] = detect_shape_with_rotations(self.getPieces(), shape)
+
+        return results
 
         
     def display(self):

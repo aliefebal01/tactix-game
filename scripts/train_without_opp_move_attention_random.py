@@ -128,7 +128,8 @@ class TrainAndPlot_without_opp_move_attention_random:
                 else:
                     state = next_state
                     
-                episode_reward += reward
+                if reward == 1 or reward == -1:
+                        episode_reward += reward
 
             # Update target
             if episode % self.target_update_freq == 0:
