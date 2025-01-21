@@ -15,6 +15,7 @@ class TactixEnvironment:
         """Reset the environment to the initial state."""
         self.starting_player = -1 if self.starting_player == 1 else 1
         self.game = TactixGame(current_player=self.starting_player)  # Create a new instance of TactixGame
+        self.game.base_board.generate_random_board(10) # Generate a random board with 8 pieces
         self.state = self.game.getPieces()  # Initialize the board state
         self.done = False  # Reset the game-over flag
         valid_moves_mask = self._generate_valid_moves_mask()
@@ -24,8 +25,7 @@ class TactixEnvironment:
         """Execute the action in the environment."""
         move = decode_action(action, self.game.height)  # Decode action index
         self.game.makeMove(move)  # Execute the move
-        
-        
+
         # intermediate rewards for handling the sparseness of the rewards 
         existing_shapes = self.game.detect_all_shapes()
        
@@ -57,8 +57,8 @@ class TactixEnvironment:
         elif existing_shapes['line_2'] and np.sum(self.game.getPieces()) == 2:
             reward = -0.8
 
-        # Game is ended or definitely won         
         game_ended = self.game.getGameEnded()
+
         if game_ended and game_ended.is_ended:
             reward = -1
             self.done = True

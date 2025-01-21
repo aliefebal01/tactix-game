@@ -10,11 +10,11 @@ def main():
         "training_results",
         "training_results_5x5_with_attention_mcts2",
         "models",
-        "network_hl_256_256_256_256_256_gamma_0.70_bs_128_tufq_100_mcts_iter_50_mcts_lr_0.4_wr_27_tr_-241556.pth"
+        "network_hl_256_256_256_256_256_gamma_0.70_bs_256_tufq_200_mcts_iter_50_mcts_lr_0.4_wr_24_tr_-362922.pth"
     )
     print("training a medium model pretrained with another dqn")
     experiment_mcts_pre_30 = TrainAndPlot_without_opp_move_attention_mcts2(n_episodes=100000, max_t=1000, batch_sizes=[128], layers= [[256, 256, 256, 256, 256]],
-                                                                    gammas=[0.7], epsilon_min=0.01, epsilon_max=0.7, epsilon_decay=0.9995, 
+                                                                    gammas=[0.7], epsilon_min=0.01, epsilon_max=0.7, epsilon_decay=0.99995, 
                                                                     memory_capacity=50000, device='cpu', target_update_freq=100, lr=0.0001, log_interval=1000, mcts_iteration=50, mcts_lr=0.4)
     results_mcts = experiment_mcts_pre_30.run_experiments(pretrained_model_path=pretrained_model_path_30);
 

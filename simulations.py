@@ -83,18 +83,9 @@ def run_simulation_set(num_games, learning_rates, iteration_counts, player_order
 if __name__ == "__main__":
     # Define different learning rates and iteration counts for testing
     learning_rates = [
-    (0.1, 0.1),               # Very low exploration
-    (0.2, 0.2),               # Low exploration
-    (0.2, 1/np.sqrt(2)),      # Moderate exploration for second agent
-    (0.3, 0.3),               # Moderate exploration for both
-    (0.3, 0.5),               # Balanced low-medium exploration
-    (1/np.sqrt(2), 1/np.sqrt(2)),  # Common MCTS exploration rate
-    (0.4, 0.6),               # Slightly higher exploration
-    (0.5, 0.7),               # Higher exploration for both
-    (0.5, 1),                 # High exploration for second agent
-    (1, 1)                    # Very high exploration
+    (1/np.sqrt(2), 1/np.sqrt(2)),               # Very low exploration
     ]
-    iteration_counts = [2
+    iteration_counts = [
     (1000, 1000),             # Baseline
     (1000, 3000),             # Uneven: second agent has more simulations
     (2000, 2000),             # Moderate iterations
