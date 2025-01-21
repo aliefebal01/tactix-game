@@ -152,6 +152,30 @@ class Board():
     def reset_board(self):
         "Reset the game state to the initial configuration."
         self.np_pieces = np.ones([self.height, self.width], dtype=int)
+
+    
+    
+    def generate_random_board(self, piece_count):
+
+        if piece_count > self.height * self.width:
+            raise ValueError("The number of pieces exceeds the total cells in the board.")
+        
+        # Create an empty board
+        board = np.zeros((self.height, self.width), dtype=int)
+        
+        # Flatten the board to make placing pieces easier
+        flat_board = board.flatten()
+        
+        # Choose random positions to place the pieces
+        random_indices = np.random.choice(len(flat_board), size=piece_count, replace=False)
+        
+        # Set the chosen positions to 1
+        flat_board[random_indices] = 1
+        
+        # Reshape back to the original board dimensions
+        board = flat_board.reshape((self.height, self.width))
+
+        self.np_pieces = board
         
     
 
