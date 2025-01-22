@@ -30,13 +30,13 @@ def run_simulations(iterations, learning_rates, num_games, output_file="simulati
 
     for iter_1 in iterations:
         for iter_2 in iterations:
-            # if iter_1 >= iter_2:
-            #     continue  # Avoid duplicate and self-play
+            if iter_1 >= iter_2:
+                continue  # Avoid duplicate and self-play
 
             for lr_1 in learning_rates:
                 for lr_2 in learning_rates:
-                    if lr_1 >= lr_2:
-                        continue  # Avoid duplicate and self-play
+                    # if lr_1 >= lr_2:
+                    #     continue  # Avoid duplicate and self-play
 
                     agent_1_params = {"iterations": iter_1, "exploration_weight": lr_1}
                     agent_2_params = {"iterations": iter_2, "exploration_weight": lr_2}
@@ -74,9 +74,9 @@ def run_simulations(iterations, learning_rates, num_games, output_file="simulati
     print(f"\nAll simulation results saved to {output_file}")
 
 if __name__ == "__main__":
-    iterations = [1000]
-    learning_rates = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1/np.sqrt(2), 0.8, 0.9]
+    iterations = [250, 500, 750, 1000, 1250, 1500]
+    learning_rates = [1/np.sqrt(2)]
     num_games = 100
 
     # Run the simulations
-    run_simulations(iterations, learning_rates, num_games, output_file="backup_diff_lr.json")
+    run_simulations(iterations, learning_rates, num_games, output_file="backup_diff_iter.json")
