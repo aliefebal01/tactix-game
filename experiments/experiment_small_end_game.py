@@ -13,8 +13,9 @@ def main():
 
 
     experiment_mcts2 = TrainAndPlot_end_game_attention(n_episodes=1000000, max_t=1000, batch_sizes=[128], layers= [[128,128,128]],
-                                                                    gammas=[0.7], epsilon_min=0.05, epsilon_max=1.0, epsilon_decay=0.99995, 
+                                                                    gammas=[0.7], epsilon_min=0.05, epsilon_max=1.0, epsilon_decay=0.99998, 
                                                                     memory_capacity=25000, device='cpu', target_update_freq=200, lr=0.0001, log_interval=100, mcts_iteration=50, mcts_lr=0.4)
+    print("training small end game last 6 pieces with mh attention")
     results_mcts = experiment_mcts2.run_experiments();
 
 
