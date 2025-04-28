@@ -13,9 +13,9 @@ class TactixEnvironment:
 
     def reset(self):
         """Reset the environment to the initial state."""
-        self.starting_player = -1 if self.starting_player == 1 else 1
+        self.starting_player = 1     # -1 if self.starting_player == 1 else 1
         self.game = TactixGame(current_player=self.starting_player)  # Create a new instance of TactixGame
-        self.game.base_board.generate_random_board(8) # Generate a random board with 8 pieces
+        self.game.base_board.generate_random_board(10) # Generate a random board with 8 pieces
         self.state = self.game.getPieces()  # Initialize the board state
         self.done = False  # Reset the game-over flag
         valid_moves_mask = self._generate_valid_moves_mask()
@@ -25,6 +25,7 @@ class TactixEnvironment:
         """Execute the action in the environment."""
         move = decode_action(action, self.game.height)  # Decode action index
         self.game.makeMove(move)  # Execute the move
+        self.state = self.game.getPieces()
         game_ended = self.game.getGameEnded()
 
         if game_ended and game_ended.is_ended:

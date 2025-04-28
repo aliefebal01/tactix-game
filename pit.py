@@ -7,8 +7,8 @@ import numpy as np
 
 def play_game():
     # Initialize the game and agent
-    game = TactixGame()
-    agent = MCTSAgent_negamax(player = 1, iterations=6000, exploration_weight=0.2)
+    game = TactixGame(height=2, width=2)
+    agent = MCTSAgent_negamax(player = 1, iterations=1, exploration_weight=0.4)
     current_node = MCTSNode(game)
     
 

@@ -74,8 +74,8 @@ def run_simulations(iterations, learning_rates, num_games, output_file="simulati
     print(f"\nAll simulation results saved to {output_file}")
 
 if __name__ == "__main__":
-    iterations = [1000]
-    learning_rates = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1/np.sqrt(2), 0.8, 0.9]
+    iterations = [50]
+    learning_rates = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1/np.sqrt(2), 0.8, 0.9]
     num_games = 100
 
     # Run the simulations

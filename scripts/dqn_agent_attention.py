@@ -21,7 +21,10 @@ class DQNAgent:
         memory_capacity=10000,
         device='cpu',
         pretrained_model_path=None
+        
     ):
+        
+    
         self.state_size = state_size
         self.action_size = action_size
         self.gamma = gamma
@@ -104,7 +107,7 @@ class DQNAgent:
             #temp_next_q_values = self.target_network(next_states)
             #temp_next_q_values[next_states_valid_moves_mask == 0] = -float('inf')
             #max_next_q_values = temp_next_q_values.max(1)[0]
-            max_next_q_values = self.target_network(next_states).max(1)[0]
+            max_next_q_values = self.target_network(next_states).min(1)[0]
             target_q_values = rewards + (1 - dones.float()) * self.gamma * max_next_q_values
         
         # Loss and optimization

@@ -2,7 +2,7 @@ import torch
 from scripts.dqn_agent_attention import DQNAgent
 import numpy as np
 from tactix.utils import *
-from tactix.tactixEnvironment_with_opp_random import TactixEnvironment
+from no_use.tactixEnvironment_with_opp_random import TactixEnvironment
 from tactix.tactixGame import TactixGame
 import matplotlib.pyplot as plt
 from tqdm import tqdm 

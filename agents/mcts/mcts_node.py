@@ -9,13 +9,14 @@ LEARNING_PARAM = 1 / np.sqrt(2) # this could also be sqrt(2) chosen according to
 
 
 class MCTSNode:
-    def __init__(self, state, parent=None):
+    def __init__(self, state, parent=None, action_got_here=None):
         self.state = state # the state of the board
         self.parent = parent # the parent node
         self.children = [] # list of the children nodes
         self.visits = 0 # number of visits
         self.wins = 0 # number of wins
         self.untried_actions = state.getValidMoves() # gets the valid moves from tactixGame.py 
+        self.action_got_here = action_got_here # the action that got us to this node
 
     def is_fully_expanded(self):
         "Returns True if all actions have been tried."
@@ -28,7 +29,7 @@ class MCTSNode:
         action = self.untried_actions.pop(idx) #choosing a random action in O(n) time
             
         next_state = self.state.getNextState(action)
-        child_node = MCTSNode(next_state, parent=self)
+        child_node = MCTSNode(next_state, parent=self, action_got_here=action)
         self.children.append(child_node)
         return child_node
         

@@ -5,10 +5,13 @@ from tactix.tactixMove import Move
 from agents.mcts.mcts_node import MCTSNode
 import numpy as np
 
-def agents_play():
-    game = TactixGame()
-    agent_10000 = MCTSAgent(player=1, iterations=1000, exploration_weight=1/np.sqrt(2))
-    agent_30000 = MCTSAgent(player=-1, iterations=1000, exploration_weight=1/np.sqrt(2))
+
+
+def agents_play(starting_player):
+    
+    game = TactixGame(current_player=starting_player)
+    agent_10000 = MCTSAgent_negamax(player=1, iterations=15, exploration_weight=0.3)
+    agent_30000 = MCTSAgent_negamax(player=-1, iterations=10, exploration_weight=0.4)
     current_node = MCTSNode(game)
 
     while current_node.state.getGameEnded() is None:
@@ -30,8 +33,9 @@ def run_simulation(num_games=100):
     agent_30000_wins = 0
 
     for i in range(num_games):
+        starting_player = 1 if i % 2 == 0 else -1
         print(f"Running game {i + 1}...")
-        winner = agents_play()
+        winner = agents_play(starting_player)
 
         if winner == 1:
             agent_10000_wins += 1

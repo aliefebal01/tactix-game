@@ -75,8 +75,8 @@ def run_simulations(iterations, learning_rates, num_games, output_file="simulati
 
 if __name__ == "__main__":
     iterations = [250, 500, 750, 1000, 1250, 1500]
-    learning_rates = [1/np.sqrt(2)]
+    learning_rates = [0.3]
     num_games = 100
 
     # Run the simulations
-    run_simulations(iterations, learning_rates, num_games, output_file="backup_diff_iter.json")
+    run_simulations(iterations, learning_rates, num_games, output_file="backup_diff_iter_0.3.json")

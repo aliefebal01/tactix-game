@@ -1,0 +1,92 @@
+[
+    {
+        "agent_1": "Agent_250_0.3",
+        "agent_2": "Agent_500_0.3",
+        "agent_1_wins": 48,
+        "agent_2_wins": 52
+    },
+    {
+        "agent_1": "Agent_250_0.3",
+        "agent_2": "Agent_750_0.3",
+        "agent_1_wins": 48,
+        "agent_2_wins": 52
+    },
+    {
+        "agent_1": "Agent_250_0.3",
+        "agent_2": "Agent_1000_0.3",
+        "agent_1_wins": 42,
+        "agent_2_wins": 58
+    },
+    {
+        "agent_1": "Agent_250_0.3",
+        "agent_2": "Agent_1250_0.3",
+        "agent_1_wins": 44,
+        "agent_2_wins": 56
+    },
+    {
+        "agent_1": "Agent_250_0.3",
+        "agent_2": "Agent_1500_0.3",
+        "agent_1_wins": 36,
+        "agent_2_wins": 64
+    },
+    {
+        "agent_1": "Agent_500_0.3",
+        "agent_2": "Agent_750_0.3",
+        "agent_1_wins": 45,
+        "agent_2_wins": 55
+    },
+    {
+        "agent_1": "Agent_500_0.3",
+        "agent_2": "Agent_1000_0.3",
+        "agent_1_wins": 43,
+        "agent_2_wins": 57
+    },
+    {
+        "agent_1": "Agent_500_0.3",
+        "agent_2": "Agent_1250_0.3",
+        "agent_1_wins": 38,
+        "agent_2_wins": 62
+    },
+    {
+        "agent_1": "Agent_500_0.3",
+        "agent_2": "Agent_1500_0.3",
+        "agent_1_wins": 28,
+        "agent_2_wins": 72
+    },
+    {
+        "agent_1": "Agent_750_0.3",
+        "agent_2": "Agent_1000_0.3",
+        "agent_1_wins": 45,
+        "agent_2_wins": 55
+    },
+    {
+        "agent_1": "Agent_750_0.3",
+        "agent_2": "Agent_1250_0.3",
+        "agent_1_wins": 39,
+        "agent_2_wins": 61
+    },
+    {
+        "agent_1": "Agent_750_0.3",
+        "agent_2": "Agent_1500_0.3",
+        "agent_1_wins": 35,
+        "agent_2_wins": 65
+    },
+    {
+        "agent_1": "Agent_1000_0.3",
+        "agent_2": "Agent_1250_0.3",
+        "agent_1_wins": 48,
+        "agent_2_wins": 52
+    },
+    {
+        "agent_1": "Agent_1000_0.3",
+        "agent_2": "Agent_1500_0.3",
+        "agent_1_wins": 46,
+        "agent_2_wins": 54
+    },
+    {
+        "agent_1": "Agent_1250_0.3",
+        "agent_2": "Agent_1500_0.3",
+        "agent_1_wins": 47,
+        "agent_2_wins": 53
+    }
+]

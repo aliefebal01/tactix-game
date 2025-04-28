@@ -1,218 +1,272 @@
 [
     {
-        "agent_1": "Agent_1000_0.2",
-        "agent_2": "Agent_1000_0.3",
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.2",
+        "agent_1_wins": 53,
+        "agent_2_wins": 47
+    },
+    {
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.3",
         "agent_1_wins": 45,
         "agent_2_wins": 55
     },
     {
-        "agent_1": "Agent_1000_0.2",
-        "agent_2": "Agent_1000_0.4",
-        "agent_1_wins": 64,
-        "agent_2_wins": 36
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.4",
+        "agent_1_wins": 52,
+        "agent_2_wins": 48
     },
     {
-        "agent_1": "Agent_1000_0.2",
-        "agent_2": "Agent_1000_0.5",
-        "agent_1_wins": 61,
-        "agent_2_wins": 39
-    },
-    {
-        "agent_1": "Agent_1000_0.2",
-        "agent_2": "Agent_1000_0.6",
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.5",
         "agent_1_wins": 50,
         "agent_2_wins": 50
     },
     {
-        "agent_1": "Agent_1000_0.2",
-        "agent_2": "Agent_1000_0.7",
-        "agent_1_wins": 67,
-        "agent_2_wins": 33
-    },
-    {
-        "agent_1": "Agent_1000_0.2",
-        "agent_2": "Agent_1000_0.7071067811865475",
-        "agent_1_wins": 61,
-        "agent_2_wins": 39
-    },
-    {
-        "agent_1": "Agent_1000_0.2",
-        "agent_2": "Agent_1000_0.8",
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.6",
         "agent_1_wins": 58,
         "agent_2_wins": 42
     },
     {
-        "agent_1": "Agent_1000_0.2",
-        "agent_2": "Agent_1000_0.9",
-        "agent_1_wins": 57,
-        "agent_2_wins": 43
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.7",
+        "agent_1_wins": 51,
+        "agent_2_wins": 49
     },
     {
-        "agent_1": "Agent_1000_0.3",
-        "agent_2": "Agent_1000_0.4",
-        "agent_1_wins": 59,
-        "agent_2_wins": 41
-    },
-    {
-        "agent_1": "Agent_1000_0.3",
-        "agent_2": "Agent_1000_0.5",
-        "agent_1_wins": 60,
-        "agent_2_wins": 40
-    },
-    {
-        "agent_1": "Agent_1000_0.3",
-        "agent_2": "Agent_1000_0.6",
-        "agent_1_wins": 63,
-        "agent_2_wins": 37
-    },
-    {
-        "agent_1": "Agent_1000_0.3",
-        "agent_2": "Agent_1000_0.7",
-        "agent_1_wins": 57,
-        "agent_2_wins": 43
-    },
-    {
-        "agent_1": "Agent_1000_0.3",
-        "agent_2": "Agent_1000_0.7071067811865475",
-        "agent_1_wins": 66,
-        "agent_2_wins": 34
-    },
-    {
-        "agent_1": "Agent_1000_0.3",
-        "agent_2": "Agent_1000_0.8",
-        "agent_1_wins": 66,
-        "agent_2_wins": 34
-    },
-    {
-        "agent_1": "Agent_1000_0.3",
-        "agent_2": "Agent_1000_0.9",
-        "agent_1_wins": 62,
-        "agent_2_wins": 38
-    },
-    {
-        "agent_1": "Agent_1000_0.4",
-        "agent_2": "Agent_1000_0.5",
-        "agent_1_wins": 45,
-        "agent_2_wins": 55
-    },
-    {
-        "agent_1": "Agent_1000_0.4",
-        "agent_2": "Agent_1000_0.6",
-        "agent_1_wins": 48,
-        "agent_2_wins": 52
-    },
-    {
-        "agent_1": "Agent_1000_0.4",
-        "agent_2": "Agent_1000_0.7",
-        "agent_1_wins": 59,
-        "agent_2_wins": 41
-    },
-    {
-        "agent_1": "Agent_1000_0.4",
-        "agent_2": "Agent_1000_0.7071067811865475",
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.7071067811865475",
         "agent_1_wins": 50,
         "agent_2_wins": 50
     },
     {
-        "agent_1": "Agent_1000_0.4",
-        "agent_2": "Agent_1000_0.8",
-        "agent_1_wins": 54,
-        "agent_2_wins": 46
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.8",
+        "agent_1_wins": 56,
+        "agent_2_wins": 44
     },
     {
-        "agent_1": "Agent_1000_0.4",
-        "agent_2": "Agent_1000_0.9",
-        "agent_1_wins": 52,
-        "agent_2_wins": 48
+        "agent_1": "Agent_50_0.1",
+        "agent_2": "Agent_50_0.9",
+        "agent_1_wins": 50,
+        "agent_2_wins": 50
     },
     {
-        "agent_1": "Agent_1000_0.5",
-        "agent_2": "Agent_1000_0.6",
-        "agent_1_wins": 54,
-        "agent_2_wins": 46
-    },
-    {
-        "agent_1": "Agent_1000_0.5",
-        "agent_2": "Agent_1000_0.7",
-        "agent_1_wins": 52,
-        "agent_2_wins": 48
-    },
-    {
-        "agent_1": "Agent_1000_0.5",
-        "agent_2": "Agent_1000_0.7071067811865475",
+        "agent_1": "Agent_50_0.2",
+        "agent_2": "Agent_50_0.3",
         "agent_1_wins": 49,
         "agent_2_wins": 51
     },
     {
-        "agent_1": "Agent_1000_0.5",
-        "agent_2": "Agent_1000_0.8",
-        "agent_1_wins": 54,
-        "agent_2_wins": 46
-    },
-    {
-        "agent_1": "Agent_1000_0.5",
-        "agent_2": "Agent_1000_0.9",
-        "agent_1_wins": 59,
-        "agent_2_wins": 41
-    },
-    {
-        "agent_1": "Agent_1000_0.6",
-        "agent_2": "Agent_1000_0.7",
-        "agent_1_wins": 56,
-        "agent_2_wins": 44
-    },
-    {
-        "agent_1": "Agent_1000_0.6",
-        "agent_2": "Agent_1000_0.7071067811865475",
-        "agent_1_wins": 45,
-        "agent_2_wins": 55
-    },
-    {
-        "agent_1": "Agent_1000_0.6",
-        "agent_2": "Agent_1000_0.8",
-        "agent_1_wins": 56,
-        "agent_2_wins": 44
-    },
-    {
-        "agent_1": "Agent_1000_0.6",
-        "agent_2": "Agent_1000_0.9",
+        "agent_1": "Agent_50_0.2",
+        "agent_2": "Agent_50_0.4",
         "agent_1_wins": 55,
         "agent_2_wins": 45
     },
     {
-        "agent_1": "Agent_1000_0.7",
-        "agent_2": "Agent_1000_0.7071067811865475",
-        "agent_1_wins": 52,
-        "agent_2_wins": 48
+        "agent_1": "Agent_50_0.2",
+        "agent_2": "Agent_50_0.5",
+        "agent_1_wins": 37,
+        "agent_2_wins": 63
     },
     {
-        "agent_1": "Agent_1000_0.7",
-        "agent_2": "Agent_1000_0.8",
-        "agent_1_wins": 49,
-        "agent_2_wins": 51
+        "agent_1": "Agent_50_0.2",
+        "agent_2": "Agent_50_0.6",
+        "agent_1_wins": 61,
+        "agent_2_wins": 39
     },
     {
-        "agent_1": "Agent_1000_0.7",
-        "agent_2": "Agent_1000_0.9",
+        "agent_1": "Agent_50_0.2",
+        "agent_2": "Agent_50_0.7",
         "agent_1_wins": 50,
         "agent_2_wins": 50
     },
     {
-        "agent_1": "Agent_1000_0.7071067811865475",
-        "agent_2": "Agent_1000_0.8",
+        "agent_1": "Agent_50_0.2",
+        "agent_2": "Agent_50_0.7071067811865475",
+        "agent_1_wins": 47,
+        "agent_2_wins": 53
+    },
+    {
+        "agent_1": "Agent_50_0.2",
+        "agent_2": "Agent_50_0.8",
+        "agent_1_wins": 56,
+        "agent_2_wins": 44
+    },
+    {
+        "agent_1": "Agent_50_0.2",
+        "agent_2": "Agent_50_0.9",
+        "agent_1_wins": 58,
+        "agent_2_wins": 42
+    },
+    {
+        "agent_1": "Agent_50_0.3",
+        "agent_2": "Agent_50_0.4",
+        "agent_1_wins": 58,
+        "agent_2_wins": 42
+    },
+    {
+        "agent_1": "Agent_50_0.3",
+        "agent_2": "Agent_50_0.5",
         "agent_1_wins": 46,
         "agent_2_wins": 54
     },
     {
-        "agent_1": "Agent_1000_0.7071067811865475",
-        "agent_2": "Agent_1000_0.9",
+        "agent_1": "Agent_50_0.3",
+        "agent_2": "Agent_50_0.6",
         "agent_1_wins": 48,
         "agent_2_wins": 52
     },
     {
-        "agent_1": "Agent_1000_0.8",
-        "agent_2": "Agent_1000_0.9",
+        "agent_1": "Agent_50_0.3",
+        "agent_2": "Agent_50_0.7",
+        "agent_1_wins": 59,
+        "agent_2_wins": 41
+    },
+    {
+        "agent_1": "Agent_50_0.3",
+        "agent_2": "Agent_50_0.7071067811865475",
+        "agent_1_wins": 57,
+        "agent_2_wins": 43
+    },
+    {
+        "agent_1": "Agent_50_0.3",
+        "agent_2": "Agent_50_0.8",
+        "agent_1_wins": 52,
+        "agent_2_wins": 48
+    },
+    {
+        "agent_1": "Agent_50_0.3",
+        "agent_2": "Agent_50_0.9",
+        "agent_1_wins": 59,
+        "agent_2_wins": 41
+    },
+    {
+        "agent_1": "Agent_50_0.4",
+        "agent_2": "Agent_50_0.5",
+        "agent_1_wins": 45,
+        "agent_2_wins": 55
+    },
+    {
+        "agent_1": "Agent_50_0.4",
+        "agent_2": "Agent_50_0.6",
+        "agent_1_wins": 53,
+        "agent_2_wins": 47
+    },
+    {
+        "agent_1": "Agent_50_0.4",
+        "agent_2": "Agent_50_0.7",
+        "agent_1_wins": 40,
+        "agent_2_wins": 60
+    },
+    {
+        "agent_1": "Agent_50_0.4",
+        "agent_2": "Agent_50_0.7071067811865475",
+        "agent_1_wins": 52,
+        "agent_2_wins": 48
+    },
+    {
+        "agent_1": "Agent_50_0.4",
+        "agent_2": "Agent_50_0.8",
+        "agent_1_wins": 52,
+        "agent_2_wins": 48
+    },
+    {
+        "agent_1": "Agent_50_0.4",
+        "agent_2": "Agent_50_0.9",
+        "agent_1_wins": 47,
+        "agent_2_wins": 53
+    },
+    {
+        "agent_1": "Agent_50_0.5",
+        "agent_2": "Agent_50_0.6",
+        "agent_1_wins": 42,
+        "agent_2_wins": 58
+    },
+    {
+        "agent_1": "Agent_50_0.5",
+        "agent_2": "Agent_50_0.7",
+        "agent_1_wins": 51,
+        "agent_2_wins": 49
+    },
+    {
+        "agent_1": "Agent_50_0.5",
+        "agent_2": "Agent_50_0.7071067811865475",
+        "agent_1_wins": 51,
+        "agent_2_wins": 49
+    },
+    {
+        "agent_1": "Agent_50_0.5",
+        "agent_2": "Agent_50_0.8",
+        "agent_1_wins": 56,
+        "agent_2_wins": 44
+    },
+    {
+        "agent_1": "Agent_50_0.5",
+        "agent_2": "Agent_50_0.9",
+        "agent_1_wins": 56,
+        "agent_2_wins": 44
+    },
+    {
+        "agent_1": "Agent_50_0.6",
+        "agent_2": "Agent_50_0.7",
+        "agent_1_wins": 55,
+        "agent_2_wins": 45
+    },
+    {
+        "agent_1": "Agent_50_0.6",
+        "agent_2": "Agent_50_0.7071067811865475",
+        "agent_1_wins": 56,
+        "agent_2_wins": 44
+    },
+    {
+        "agent_1": "Agent_50_0.6",
+        "agent_2": "Agent_50_0.8",
+        "agent_1_wins": 61,
+        "agent_2_wins": 39
+    },
+    {
+        "agent_1": "Agent_50_0.6",
+        "agent_2": "Agent_50_0.9",
+        "agent_1_wins": 46,
+        "agent_2_wins": 54
+    },
+    {
+        "agent_1": "Agent_50_0.7",
+        "agent_2": "Agent_50_0.7071067811865475",
+        "agent_1_wins": 52,
+        "agent_2_wins": 48
+    },
+    {
+        "agent_1": "Agent_50_0.7",
+        "agent_2": "Agent_50_0.8",
+        "agent_1_wins": 36,
+        "agent_2_wins": 64
+    },
+    {
+        "agent_1": "Agent_50_0.7",
+        "agent_2": "Agent_50_0.9",
         "agent_1_wins": 48,
         "agent_2_wins": 52
+    },
+    {
+        "agent_1": "Agent_50_0.7071067811865475",
+        "agent_2": "Agent_50_0.8",
+        "agent_1_wins": 53,
+        "agent_2_wins": 47
+    },
+    {
+        "agent_1": "Agent_50_0.7071067811865475",
+        "agent_2": "Agent_50_0.9",
+        "agent_1_wins": 58,
+        "agent_2_wins": 42
+    },
+    {
+        "agent_1": "Agent_50_0.8",
+        "agent_2": "Agent_50_0.9",
+        "agent_1_wins": 60,
+        "agent_2_wins": 40
     }
 ]

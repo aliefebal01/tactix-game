@@ -13,7 +13,7 @@ class TactixEnvironment:
 
     def reset(self):
         """Reset the environment to the initial state."""
-        self.starting_player = -1 if self.starting_player == 1 else 1
+        self.starting_player = 1 # we will let dqn make the first move always to get a better understanding for the end game  -1 if self.starting_player == 1 else 1
         self.game = TactixGame(current_player=self.starting_player)  # Create a new instance of TactixGame
         self.game.base_board.generate_random_board(10) # Generate a random board with 8 pieces
         self.state = self.game.getPieces()  # Initialize the board state
@@ -25,37 +25,38 @@ class TactixEnvironment:
         """Execute the action in the environment."""
         move = decode_action(action, self.game.height)  # Decode action index
         self.game.makeMove(move)  # Execute the move
+        self.state = self.game.getPieces()
 
         # intermediate rewards for handling the sparseness of the rewards 
         existing_shapes = self.game.detect_all_shapes()
        
         if not existing_shapes['line_2'] and np.sum(self.game.getPieces()) % 2 == 0: # leaving not adjacent and even number of pieces to the opponent
-            reward = -0.8
+            reward = -0.2
         
         
         if not existing_shapes['line_2'] and np.sum(self.game.getPieces()) % 2 != 0: # leaving not adjacent and odd number of pieces to the opponent
-            reward = 0.8
+            reward = 0.2
         
         if self.game.height == 7:
             if existing_shapes['line_7'] and np.sum(self.game.getPieces()) == 7:
-                reward = -0.8
+                reward = -0.5
         
         if self.game.height == 6:
             if existing_shapes['line_6'] and np.sum(self.game.getPieces()) == 6:
-                reward = -0.8
+                reward = -0.5
        
         if existing_shapes['square'] and np.sum(self.game.getPieces()) == 4:
-            reward = 0.6
+            reward = 0.2
         elif existing_shapes['triangle'] and np.sum(self.game.getPieces()) == 3:
-            reward = -0.6
+            reward = -0.2
         elif existing_shapes['line_5'] and np.sum(self.game.getPieces()) == 5:
-            reward = -0.8
+            reward = -0.5
         elif existing_shapes['line_4'] and np.sum(self.game.getPieces()) == 4:
-            reward = -0.8
+            reward = -0.5
         elif existing_shapes['line_3'] and np.sum(self.game.getPieces()) == 3:
-            reward = -0.8
+            reward = -0.5
         elif existing_shapes['line_2'] and np.sum(self.game.getPieces()) == 2:
-            reward = -0.8
+            reward = -0.5
 
         game_ended = self.game.getGameEnded()
 

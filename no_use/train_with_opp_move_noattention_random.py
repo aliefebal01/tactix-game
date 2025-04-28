@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scripts.dqn_agent import DQNAgent
 from tactix.utils import *
-from tactix.tactixEnvironment_with_opp_random import TactixEnvironment
+from no_use.tactixEnvironment_with_opp_random import TactixEnvironment
 from tactix.tactixGame import TactixGame
 from tqdm import tqdm 
 import os 

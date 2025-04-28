@@ -5,7 +5,7 @@ from scripts.dqn_agent_attention import DQNAgent
 from agents.mcts.mcts_agent_negamax import MCTSAgent_negamax
 from agents.mcts.mcts_node import MCTSNode
 from tactix.utils import *
-from tactix.tactixEnvironment_with_opp_mcts2 import TactixEnvironment
+from no_use.tactixEnvironment_with_opp_mcts2 import TactixEnvironment
 from tactix.tactixGame import TactixGame
 from tqdm import tqdm 
 import os

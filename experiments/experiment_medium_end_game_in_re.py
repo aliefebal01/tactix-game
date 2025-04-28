@@ -15,6 +15,7 @@ def main():
     experiment_mcts2 = TrainAndPlot_end_game_in_re(n_episodes=1000000, max_t=1000, batch_sizes=[256], layers= [[256, 256, 256, 256, 256]],
                                                                     gammas=[0.7], epsilon_min=0.05, epsilon_max=1.0, epsilon_decay=0.99998, 
                                                                     memory_capacity=50000, device='cpu', target_update_freq=200, lr=0.0001, log_interval=100, mcts_iteration=50, mcts_lr=0.4)
+    print("trainin medium end_game int. rew. 8 pieces")
     results_mcts = experiment_mcts2.run_experiments();
 
 

@@ -52,8 +52,8 @@ class TrainAndPlot_without_opp_move_attention_mcts2:
 
     def run_training(self, layer_structure, gamma, models_dir, batch_size, pretrained_model_path=None):
     
-
-
+        
+        
         # Create agent
         agent = DQNAgent(
             state_size=self.env.game.height ** 2,

@@ -16,11 +16,14 @@ class TactixGame():
     
 
     def __init__(self, height=None, width=None, np_pieces=None, current_player = None):
+
         self.height = height or DEFAULT_HEIGHT
         self.width = width or DEFAULT_HEIGHT
+      
         self.base_board = Board(height, width, np_pieces if np_pieces is not None else None)
         self.current_player = current_player or DEFAULT_STARTING_PLAYER
         self.win_state = WinState(is_ended=False, winner=None)  # Initialize with is_ended=False
+        
         # Define shape templates
         self.shapes = {
             "triangle": np.array([
@@ -32,16 +35,23 @@ class TactixGame():
                 [1, 1]
             ]),
             "line_2": np.array([[1, 1]]),
-            "line_3": np.array([[1, 1, 1]]),
-            "line_4": np.array([[1, 1, 1, 1]]),
-            "line_5": np.array([[1, 1, 1, 1, 1]])
+            "line_3": np.array([[1, 1, 1]])
         }
-        if self.height == 6:
-            self.shapes["line_6"] = np.array([[1, 1, 1, 1, 1, 1]])
-        if self.height == 7:
+        
+        if self.height == 7:           
+            self.shapes["line_4"] = np.array([[1, 1, 1, 1]])
+            self.shapes["line_5"] = np.array([[1, 1, 1, 1, 1]])
             self.shapes["line_6"] = np.array([[1, 1, 1, 1, 1, 1]])
             self.shapes["line_7"] = np.array([[1, 1, 1, 1, 1, 1, 1]])
-        
+        if self.height == 6:
+            self.shapes["line_6"] = np.array([[1, 1, 1, 1, 1, 1]])
+            self.shapes["line_4"] = np.array([[1, 1, 1, 1]])
+            self.shapes["line_5"] = np.array([[1, 1, 1, 1, 1]])
+        if self.height == 5:
+            self.shapes["line_4"] = np.array([[1, 1, 1, 1]])
+            self.shapes["line_5"] = np.array([[1, 1, 1, 1, 1]])
+        if self.height == 4:
+            self.shapes["line_4"] = np.array([[1, 1, 1, 1]])
 
 
     def __eq__(self, other):
